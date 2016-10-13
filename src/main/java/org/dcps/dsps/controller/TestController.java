@@ -1,18 +1,15 @@
 package org.dcps.dsps.controller;
 
-import org.dcps.dsps.repository.TestRepository;
-import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RestController;
 
-@RestController
+import static org.springframework.web.bind.annotation.RequestMethod.GET;
+
+@Controller
 public class TestController {
-    @Autowired
-    TestRepository testRepository;
 
-    @RequestMapping(value = "test", method = RequestMethod.GET)
-    public String changePassword() {
-        return "hello " + testRepository.query();
+    @RequestMapping(value = "test", method = GET)
+    public String test() {
+        return "index";
     }
 }
