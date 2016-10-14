@@ -66,7 +66,7 @@
                     'All maps © <a href="http://www.openseamap.org/">OpenSeaMap</a>',
                     ol.source.OSM.ATTRIBUTION
                 ],
-                url: 'http://localhost:8082/{z}/{x}/{y}.png'
+                url: '${mapUrl}/{z}/{x}/{y}.png'
             })
         });
 
