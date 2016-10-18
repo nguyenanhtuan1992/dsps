@@ -90,5 +90,13 @@
             console.info(ol.proj.transform(evt.coordinate, 'EPSG:3857', 'EPSG:4326'));
         });
     </script>
+    <%-- Main Menu --%>
+    <jsp:include page="common/header.jsp"/>
+    <%-- Main content --%>
+    <div class="body-container">
+        Main content
+    </div>
+    <%-- Footer --%>
+    <jsp:include page="common/footer.jsp"/>
 </body>
 </html>
