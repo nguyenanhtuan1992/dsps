@@ -1,29 +1,6 @@
-<div class="com-header-info-panel" style="min-height: 47px;">
-    <div class="com-header-logo-panel" style="width: 17%; float: left; padding-top: 12px; height: 100%;">
-        <div style="float: left; ">
-            <%--  <a href="supereventmanagement/searchsupereventmanagement.html">
-                  <img src="${pageContext.request.contextPath}/images/logo_header_01.png" style="border: 0px; height: 25px; height: 25; "/>
-            </a> --%>
-        </div>
-    </div>
-    <div class="com-header-logo-panel" style="width: 83%; float: left; padding-top: 12px; height: 50%;">
-        <div style="float: left;  width: 38%;">&nbsp;
-        </div>
-        <div style="float: right;  width: 38%; text-align: right;">&nbsp;
-        </div>
-    </div>
-    <div class="com-header-button-panel" style="width: 83%; float: left; height: 50%;">
-        <div style="width: 48%; float: left;">&nbsp;
-        </div>
-        <div style="width: 48%; float: right; text-align: right;">
-        </div>
-    </div>
-</div>
-<!-- End header info -->
-
 <!-- Start Menu panel -->
 <div class="navbar navbar-default navbar-horizontal">
-    <div class="navbar-header"><a class="navbar-brand" href="#">Million Project</a></div>
+    <div class="navbar-header"><a class="navbar-brand" href="#">Da Nang</a></div>
     <div class="navbar-menu">
         <ul class="nav navbar-nav">
             <li class="dropdown"><a href="javascript:void(0);" tabindex="0" data-toggle="dropdown"
@@ -70,6 +47,14 @@
                 </ul>
             </li>
             <li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button"
+                                    aria-expanded="false">Account</a>
+                <ul class="dropdown-menu" role="menu">
+                    <li><a href="#">Thong Tin Tai Khoan</a></li>
+                    <li class="divider"></li>
+                    <li><a href="#">Thay Doi Mat Khau</a></li>
+                </ul>
+            </li>
+            <li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button"
                                     aria-expanded="false">Administrator</a>
                 <ul class="dropdown-menu" role="menu">
                     <li><a href="#">Account rule definition</a></li>
@@ -82,29 +67,14 @@
                 </ul>
             </li>
         </ul>
-        <ul class="nav navbar-nav navbar-side">
-            <li class="dropdown"><a href="javascript:" class="dropdown-toggle" data-toggle="dropdown" role="button"
-                                    aria-expanded="false" style="font-size: 16px;"><span
-                    class="glyphicon glyphicon-globe"></span></a>
-                <ul class="dropdown-menu dropdown-nav-left" role="menu">
-
-                </ul>
+        <ul class="nav navbar-nav navbar-side" style="float: right; padding-right: 50px;">
+            <li class="dropdown"><a href="../index.jsp" class="dropdown-toggle" data-toggle="dropdown" role="button"
+                                    aria-expanded="false" style="font-size: 20px;">APEC</a>
+                     <ul class="dropdown-menu dropdown-nav-left" role="menu">
+                            <li><a href="javascript:">&nbsp;&nbsp;Thay Doi</a></li>
+                     </ul>
             </li>
-            <%--<li class="dropdown"><a href="javascript:" class="dropdown-toggle" data-toggle="dropdown" role="button"
-                                    aria-expanded="false" style="font-size: 16px;"><span
-                    class="glyphicon glyphicon-user"></span></a>
-                <ul class="dropdown-menu dropdown-user dropdown-nav-left">
-                    <li><a class="qp-link-popup" href="accountProfile/profileForm.html"><span
-                            class="glyphicon glyphicon-user"></span>&nbsp;&nbsp;User setting</a></li>
-                    <li><a class="qp-link-popup" href="accountProfile/settingForm.html"><span
-                            class="glyphicon glyphicon-cog"></span>&nbsp;&nbsp;System setting</a></li>
-                    <li><a class="qp-link-popup" href="accountProfile/themeForm.html"><span
-                            class="glyphicon glyphicon-text-color"></span>&nbsp;&nbsp;Theme setting</a></li>
-                    <li class="divider"></li>
-                    <li><a href="login.html"><span class="glyphicon glyphicon-log-out"></span>&nbsp;&nbsp;Logout</a>
-                    </li>
-                </ul>
-            </li>--%>
+             <li><a href="login.html"><span class="glyphicon glyphicon-log-out"></span>&nbsp;&nbsp;Logout</a></li>
         </ul>
     </div>
 </div>

@@ -7,7 +7,7 @@
     </div>
 
     <div class="pull-right">
-        <span class="item" ondblclick="settingText(this)" style="">Copyright &copy; 2015 NTT DATA Corporation</span>
+        <span class="item" ondblclick="settingText(this)" style="">Copyright &copy; Million Team</span>
 
     </div>
 </div>

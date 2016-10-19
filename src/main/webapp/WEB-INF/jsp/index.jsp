@@ -1,14 +1,22 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
-<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%-- <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %> --%>
 <!DOCTYPE html>
 <html>
 
 <head>
     <title>Localized OpenStreetMap</title>
-    <link rel="stylesheet" href="http://openlayers.org/en/v3.18.2/css/ol.css" type="text/css">
+<!--     <link rel="stylesheet" href="http://openlayers.org/en/v3.18.2/css/ol.css" type="text/css"> -->
     <!-- The line below is only needed for old environments like Internet Explorer and Android 4.x -->
     <script src="http://cdn.polyfill.io/v2/polyfill.min.js?features=requestAnimationFrame,Element.prototype.classList,URL"></script>
     <script src="http://openlayers.org/en/v3.18.2/build/ol.js"></script>
+    <script type="text/javascript" src="../javascript/jquery-3.1.1.slim.min.js"></script>
+    <script type="text/javascript" src="../javascript/bootstrap.min.js"></script>
+    <script type="text/javascript" src="../javascript/customnavbar/bootstrap-submenu.js" ></script>
+
+    <link type="text/css" href="../css/bootstrap.css" rel="stylesheet" />
+<!--     <link type="text/css" href="../css/bootstrap.theme.css" rel="stylesheet" /> -->
+    <link type="text/css" href="../javascript/customnavbar/bootstrap-submenu.css" rel="stylesheet">
+    <link type="text/css" href="../css/common.css" rel="stylesheet"/>
     <style>
         .map {
             height: 98vh;
@@ -19,7 +27,12 @@
 </head>
 
 <body>
-    <div id="map" class="map"></div>
+    <%-- Main Menu --%>
+    <jsp:include page="common/header.jsp"/>
+    <%-- Main content --%>
+    <div class="body-container">
+        <div id="map" class="map"></div>
+    </div>
     <script>
 
         function transformExtent(extent) {
@@ -90,12 +103,6 @@
             console.info(ol.proj.transform(evt.coordinate, 'EPSG:3857', 'EPSG:4326'));
         });
     </script>
-    <%-- Main Menu --%>
-    <jsp:include page="common/header.jsp"/>
-    <%-- Main content --%>
-    <div class="body-container">
-        Main content
-    </div>
     <%-- Footer --%>
     <jsp:include page="common/footer.jsp"/>
 </body>
