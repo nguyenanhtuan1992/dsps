@@ -382,7 +382,7 @@ Template
 }
 
 .qp-body-container {
-	margin: 7px 0px 20px 0px;
+	margin: 0px 0px 0px 0px;
 }
 
 .qp-body {
@@ -393,7 +393,7 @@ Template
 
 .qp-footer {
 	padding: 0.769em 0 0;
-	margin-top: 65px;
+	margin-top: 0px;
 	border-top: solid 1.5px #7895CF;
 	padding-left: 50px;
 	padding-right: 50px;
@@ -1038,7 +1038,7 @@ Breadcrumb
 	margin-bottom: 0px;
 	height: 40px;
 }
-
+${pageContext.request.contextPath}
 /* menu bg*/
 .navbar-default {
 	background-image: linear-gradient(to bottom, #7895cf 0%, #7895cf 100%);
@@ -1089,4 +1089,37 @@ Breadcrumb
 	color: #262626;
 	background-image: linear-gradient(to bottom, #e8e8e8 0%, #e8e8e8 100%);
 	background-repeat: repeat-x;
+}
+
+/* Map */
+.map {
+    height: 98vh;
+    width: 75%;
+    border: 1px solid black;
+    float: left;
+}
+
+.infor-tab {
+	height: 98vh;
+	width: 25%;
+	border: 1px solid black;
+	float: right;
+	text-align: left;
+	padding: 5px 5px 5px 5px;
+	overflow-y: scroll;
+/* 	overflow: auto; */
+}
+
+.infor-tab > table {
+	width: 100%;
+}
+
+.table-info-vertical th {
+	font-size: 15px;
+	font-weight: bold;
+/* 	text-transform: uppercase; */
+}
+.table-info-vertical td {
+    font-size: 14px;
+/*  text-transform: uppercase; */
 }

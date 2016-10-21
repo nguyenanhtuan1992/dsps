@@ -68,10 +68,10 @@
             </li>
         </ul>
         <ul class="nav navbar-nav navbar-side" style="float: right; padding-right: 50px;">
-            <li class="dropdown"><a href="../index.jsp" class="dropdown-toggle" data-toggle="dropdown" role="button"
+            <li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button"
                                     aria-expanded="false" style="font-size: 20px;">APEC</a>
                      <ul class="dropdown-menu dropdown-nav-left" role="menu">
-                            <li><a href="javascript:">&nbsp;&nbsp;Thay Doi</a></li>
+                            <li><a href="${pageContext.request.contextPath}/jsp/index.jsp">&nbsp;&nbsp;Thay Doi</a></li>
                      </ul>
             </li>
              <li><a href="login.html"><span class="glyphicon glyphicon-log-out"></span>&nbsp;&nbsp;Logout</a></li>
