@@ -3,6 +3,8 @@ package org.dcps.dsps.entity.dao;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import org.postgresql.geometric.PGpoint;
 
+import java.util.List;
+
 /**
  * Created by ptanh2 on 10/13/2016.
  */
@@ -16,6 +18,8 @@ public class Place {
     @JsonProperty("manager_phone")
     private String managerPhone;
     private PGpoint coordinate;
+    private List<Byte[]> images;
+    private List<Police> polices;
 
     public Long getId() {
         return id;
@@ -71,5 +75,21 @@ public class Place {
 
     public void setCoordinate(PGpoint coordinate) {
         this.coordinate = coordinate;
+    }
+
+    public List<Byte[]> getImages() {
+        return images;
+    }
+
+    public void setImages(List<Byte[]> images) {
+        this.images = images;
+    }
+
+    public List<Police> getPolices() {
+        return polices;
+    }
+
+    public void setPolices(List<Police> polices) {
+        this.polices = polices;
     }
 }
