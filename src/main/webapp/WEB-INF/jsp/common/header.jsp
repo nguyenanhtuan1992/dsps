@@ -64,13 +64,15 @@
                 <li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">APEC 
                         <span class="caret"></span></a>
                     <ul class="dropdown-menu">
-                        <li><a href="#">Thong Tin</a></li>
-                        <li><a href="#">Thay Doi</a></li>
+                        <li><a href="${pageContext.request.contextPath}home">Thong Tin</a></li>
+                        <li role="separator" class="divider"></li>
+                        <li><a href="${pageContext.request.contextPath}index">Thay Doi</a></li>
                     </ul></li>
                 <li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><span class="glyphicon glyphicon-user"></span>
                         <span class="caret"></span></a>
                     <ul class="dropdown-menu">
                         <li><a href="#">Thong Tin</a></li>
+                        <li role="separator" class="divider"></li>
                         <li><a href="#">Cai Dat</a></li>
                     </ul></li>
             </ul>
