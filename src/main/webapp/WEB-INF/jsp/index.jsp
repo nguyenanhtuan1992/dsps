@@ -1,5 +1,5 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
-<%-- <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %> --%>
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
 
@@ -9,14 +9,14 @@
     <!-- The line below is only needed for old environments like Internet Explorer and Android 4.x -->
     <script src="http://cdn.polyfill.io/v2/polyfill.min.js?features=requestAnimationFrame,Element.prototype.classList,URL"></script>
     <script src="http://openlayers.org/en/v3.18.2/build/ol.js"></script>
-    <script type="text/javascript" src="${pageContext.request.contextPath}/javascript/jquery-3.1.1.slim.min.js"></script>
-    <script type="text/javascript" src="${pageContext.request.contextPath}/javascript/bootstrap.min.js"></script>
-    <script type="text/javascript" src="${pageContext.request.contextPath}/javascript/customnavbar/bootstrap-submenu.js" ></script>
+    <script type="text/javascript" src="/javascript/source/jquery-3.1.1.slim.min.js"></script>
+    <script type="text/javascript" src="/javascript/source/bootstrap.min.js"></script>
+    <script type="text/javascript" src="/javascript/source/customnavbar/bootstrap-submenu.js" ></script>
 
-    <link type="text/css" href="${pageContext.request.contextPath}/css/bootstrap.css" rel="stylesheet" />
+    <link type="text/css" src="/css/bootstrap.css" rel="stylesheet" />
 <!--     <link type="text/css" href="${pageContext.request.contextPath}/css/bootstrap.theme.css" rel="stylesheet" /> -->
-    <link type="text/css" href="${pageContext.request.contextPath}/javascript/customnavbar/bootstrap-submenu.css" rel="stylesheet">
-    <link type="text/css" href="${pageContext.request.contextPath}/css/common.css" rel="stylesheet"/>
+    <link type="text/css" src="/javascript/source/customnavbar/bootstrap-submenu.css" rel="stylesheet">
+    <link type="text/css" src="/css/common.css" rel="stylesheet"/>
 </head>
 
 <body>
@@ -269,7 +269,5 @@
             console.info(ol.proj.transform(evt.coordinate, 'EPSG:3857', 'EPSG:4326'));
         });
     </script>
-    <%-- Footer --%>
-    <jsp:include page="common/footer.jsp"/>
 </body>
 </html>
