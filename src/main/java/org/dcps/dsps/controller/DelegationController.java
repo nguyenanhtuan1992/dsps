@@ -6,20 +6,23 @@ import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import static org.springframework.web.bind.annotation.RequestMethod.GET;
-import static org.springframework.web.bind.annotation.RequestMethod.POST;
+
+/**
+ * Created by Cicada on 10/23/2016.
+ */
 
 @Controller
-@RequestMapping("test")
-public class TestController {
-    private static final String TEST_PAGE = "test";
+@RequestMapping("delegation")
+public class DelegationController {
+    private static final String DELEGATION_INFOR = "delegation/viewDelegation";
 
     @Value("${map.url}")
     String mapUrl;
 
-    @RequestMapping(value = "index", method = GET)
-    public String test(ModelMap modelMap) {
+    @RequestMapping(value = "displayDelegation", method = GET)
+    public String displayDelegation(ModelMap modelMap) {
         modelMap.put("mapUrl", mapUrl);
-        return TEST_PAGE;
+        return DELEGATION_INFOR;
     }
 
 }

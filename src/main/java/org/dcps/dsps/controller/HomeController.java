@@ -6,20 +6,29 @@ import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import static org.springframework.web.bind.annotation.RequestMethod.GET;
-import static org.springframework.web.bind.annotation.RequestMethod.POST;
+
+/**
+ * Created by Cicada on 10/23/2016.
+ */
 
 @Controller
-@RequestMapping("test")
-public class TestController {
-    private static final String TEST_PAGE = "test";
+@RequestMapping("home")
+public class HomeController {
+    private static final String INDEX_PAGE = "index";
+    private static final String HOME_PAGE = "home";
 
     @Value("${map.url}")
     String mapUrl;
 
     @RequestMapping(value = "index", method = GET)
-    public String test(ModelMap modelMap) {
+    public String index(ModelMap modelMap) {
         modelMap.put("mapUrl", mapUrl);
-        return TEST_PAGE;
+        return INDEX_PAGE;
     }
 
+    @RequestMapping(value = "home", method = GET)
+    public String settingSuperEvent(ModelMap modelMap) {
+        modelMap.put("mapUrl", mapUrl);
+        return HOME_PAGE;
+    }
 }
