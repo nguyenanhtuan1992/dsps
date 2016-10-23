@@ -166,12 +166,18 @@ a:focus>.sf-sub-indicator, a:hover>.sf-sub-indicator, a:active>.sf-sub-indicator
 	background-color: #DCDCDC;
 }
 
+.panel-heading {
+	background-color:#7895cf !important;
+}
+
 .panel-heading .qp-heading-icon {
 	width: 24px;
+    color: #FFFFFF;
 }
 
 .panel-heading .qp-heading-text {
 	font-weight: bold;
+    color: #FFFFFF;
 }
 
 .qp-div-search-condition .qp-heading-icon:before {
@@ -333,6 +339,10 @@ a:focus>.sf-sub-indicator, a:hover>.sf-sub-indicator, a:active>.sf-sub-indicator
 	/* font-size: 12px;
 	padding: 2px; */
 	
+}
+
+.qp-table-infor>tbody>tr>th {
+	background-color: #eff5f9;
 }
 
 .qp-header-theme-blue {
@@ -1036,7 +1046,6 @@ Breadcrumb
 /* customize navigate bar */
 .navbar {
 	margin-bottom: 0px;
-	height: 40px;
 }
 ${pageContext.request.contextPath}
 /* menu bg*/
@@ -1094,16 +1103,12 @@ ${pageContext.request.contextPath}
 /* Map */
 .map {
     height: 98vh;
-    width: 75%;
     border: 1px solid black;
-    float: left;
 }
 
 .infor-tab {
 	height: 98vh;
-	width: 25%;
 	border: 1px solid black;
-	float: right;
 	text-align: left;
 	padding: 5px 5px 5px 5px;
 	overflow-y: scroll;
@@ -1123,3 +1128,4 @@ ${pageContext.request.contextPath}
     font-size: 14px;
 /*  text-transform: uppercase; */
 }
+
