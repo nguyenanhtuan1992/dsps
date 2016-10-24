@@ -11,4 +11,36 @@ public class Delegation {
     private Nation nation;
     @JsonProperty("super_event_id")
     private Long superEventId;
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public Nation getNation() {
+        return nation;
+    }
+
+    public void setNation(Nation nation) {
+        this.nation = nation;
+    }
+
+    public Long getSuperEventId() {
+        return superEventId;
+    }
+
+    public void setSuperEventId(Long superEventId) {
+        this.superEventId = superEventId;
+    }
 }

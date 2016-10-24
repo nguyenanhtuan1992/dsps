@@ -40,6 +40,7 @@ public class Application {
         dataSource.setUrl(dbUrl);
         dataSource.setUsername(userName);
         dataSource.setPassword(password);
+        System.out.println("password: " + password);
         return new JdbcTemplate(dataSource);
     }
 }

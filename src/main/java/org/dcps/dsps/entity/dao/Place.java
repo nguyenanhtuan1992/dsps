@@ -18,7 +18,7 @@ public class Place {
     @JsonProperty("manager_phone")
     private String managerPhone;
     private PGpoint coordinate;
-    private List<Byte[]> images;
+    private List<Image> images;
     private List<Police> polices;
 
     public Long getId() {
@@ -77,11 +77,11 @@ public class Place {
         this.coordinate = coordinate;
     }
 
-    public List<Byte[]> getImages() {
+    public List<Image> getImages() {
         return images;
     }
 
-    public void setImages(List<Byte[]> images) {
+    public void setImages(List<Image> images) {
         this.images = images;
     }
 
