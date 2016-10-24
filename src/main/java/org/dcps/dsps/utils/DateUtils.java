@@ -1,8 +1,8 @@
 package org.dcps.dsps.utils;
 
-import com.sun.javafx.binding.StringFormatter;
 import org.apache.commons.lang3.StringUtils;
 
+import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
@@ -13,9 +13,27 @@ public class DateUtils {
      * @param pattern
      * @return string date with pattern format
      */
-    public String convertDate(Date date, String pattern) {
+    public static String convertDateToString(Date date, String pattern) {
         pattern = StringUtils.isBlank(pattern) ? Constant.PATTERN_DATE_DEFAULT : pattern;
         SimpleDateFormat simpleDateFormat = new SimpleDateFormat(pattern);
         return simpleDateFormat.format(date);
+    }
+
+    /**
+     * Convert Date with pattern format
+     * @param dateInput
+     * @param pattern
+     * @return
+     */
+    public static Date convertStringToDate(String dateInput, String pattern) {
+        pattern = StringUtils.isBlank(pattern) ? Constant.PATTERN_DATE_DEFAULT : pattern;
+        SimpleDateFormat simpleDateFormat = new SimpleDateFormat(pattern);
+        Date date = null;
+        try {
+            date = simpleDateFormat.parse(dateInput);
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
+        return date;
     }
 }
