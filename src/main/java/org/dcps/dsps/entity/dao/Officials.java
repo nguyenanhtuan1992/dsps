@@ -9,7 +9,8 @@ public class Officials {
     private Nation nation;
     private Integer gender;
     private String passport;
-    private Byte[] avatar;
+    private Image image;
+    private Position position;
 
     public Long getId() {
         return id;
@@ -51,11 +52,19 @@ public class Officials {
         this.passport = passport;
     }
 
-    public Byte[] getAvatar() {
-        return avatar;
+    public Image getImage() {
+        return image;
     }
 
-    public void setAvatar(Byte[] avatar) {
-        this.avatar = avatar;
+    public void setImage(Image image) {
+        this.image = image;
+    }
+
+    public Position getPosition() {
+        return position;
+    }
+
+    public void setPosition(Position position) {
+        this.position = position;
     }
 }
