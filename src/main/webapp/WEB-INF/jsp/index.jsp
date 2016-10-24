@@ -4,9 +4,8 @@
 <html>
 
 <head>
-    <title>Localized OpenStreetMap</title>
-    <!--     <link rel="stylesheet" href="http://openlayers.org/en/v3.18.2/css/ol.css" type="text/css"> -->
-    <!-- The line below is only needed for old environments like Internet Explorer and Android 4.x -->
+    <title>Trang Chủ</title>
+    <link rel="shortcut icon" href="${pageContext.request.contextPath}/images/logo.png"/>
     <script src="http://cdn.polyfill.io/v2/polyfill.min.js?features=requestAnimationFrame,Element.prototype.classList,URL"></script>
     <script src="http://openlayers.org/en/v3.18.2/build/ol.js"></script>
     <script type="text/javascript" src="${pageContext.request.contextPath}/javascript/source/jquery-3.1.1.slim.min.js"></script>

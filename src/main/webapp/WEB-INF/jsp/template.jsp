@@ -4,20 +4,18 @@
 <html>
 
 <head>
-    <title>Localized OpenStreetMap</title>
-    <!--     <link rel="stylesheet" href="http://openlayers.org/en/v3.18.2/css/ol.css" type="text/css"> -->
-    <!-- The line below is only needed for old environments like Internet Explorer and Android 4.x -->
-    <script src="http://cdn.polyfill.io/v2/polyfill.min.js?features=requestAnimationFrame,Element.prototype.classList,URL"></script>
-    <script src="http://openlayers.org/en/v3.18.2/build/ol.js"></script>
+    <title>Da Nang</title>
+    <link rel="shortcut icon" href="${pageContext.request.contextPath}/images/logo.png"/>
     <script type="text/javascript" src="${pageContext.request.contextPath}/javascript/source/jquery-3.1.1.slim.min.js"></script>
     <script type="text/javascript" src="${pageContext.request.contextPath}/javascript/source/bootstrap.min.js"></script>
+    <script type="text/javascript" src="${pageContext.request.contextPath}/javascript/source/openlayer/ol.js"></script>
 
     <link type="text/css" href="${pageContext.request.contextPath}/css/lib/bootstrap.css" rel="stylesheet" />
-    <!--     <link type="text/css" href="${pageContext.request.contextPath}/css/bootstrap.theme.css" rel="stylesheet" /> -->
     <link type="text/css" href="${pageContext.request.contextPath}/css/source/common.css" rel="stylesheet"/>
+    <%--<script type="text/javascript" src="${pageContext.request.contextPath}/javascript/source/openlayer/ol.css"></script>--%>
 </head>
 
-<body>
+<body class="body-map">
 <%-- Main Menu --%>
 <jsp:include page="common/header.jsp"/>
 <%-- Main content --%>
@@ -53,7 +51,7 @@
 
     //create the style
     var iconStyle = new ol.style.Style({
-        content: new ol.style.Icon(/** @type {olx.style.IconOptions} */ ({
+        image: new ol.style.Icon(/** @type {olx.style.IconOptions} */ ({
             anchor: [0.5, 46],
             anchorXUnits: 'fraction',
             anchorYUnits: 'pixels',
@@ -74,7 +72,7 @@
                 'All maps © <a href="http://www.openseamap.org/">OpenSeaMap</a>',
                 ol.source.OSM.ATTRIBUTION
             ],
-            url: '${mapUrl}/{z}/{x}/{y}.png'
+            url: '${mapUrl}/tiles/{z}/{x}/{y}.png'
         })
     });
 
