@@ -12,11 +12,10 @@
     <script type="text/javascript" src="${pageContext.request.contextPath}/javascript/source/bootstrap.min.js"></script>
 
     <link type="text/css" href="${pageContext.request.contextPath}/css/lib/bootstrap.css" rel="stylesheet" />
-    <!--     <link type="text/css" href="${pageContext.request.contextPath}/css/bootstrap.theme.css" rel="stylesheet" /> -->
     <link type="text/css" href="${pageContext.request.contextPath}/css/source/common.css" rel="stylesheet"/>
 </head>
 
-<body>
+<body class="body-fixed">
 <%-- Main Menu --%>
 <jsp:include page="common/header.jsp"/>
 <%-- Main content --%>
