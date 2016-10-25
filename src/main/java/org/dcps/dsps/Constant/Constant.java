@@ -1,4 +1,4 @@
-package org.dcps.dsps.utils;
+package org.dcps.dsps.Constant;
 
 /**
  * Created by Cicada on 10/24/2016.
