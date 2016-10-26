@@ -26,7 +26,7 @@
         <div class="col-sm-8">
             <form id="settingSuperEvent" action="home" method="post">
                 <div class="panel panel-default qp-div-select">
-                    <div class="panel-heading">
+                    <div class="panel-heading qp-panel-heading">
                         <span aria-hidden="true" class="glyphicon qp-heading-icon">&nbsp;</span>
                         <span class="qp-heading-text">Danh sách sự kiện</span>
                     </div>

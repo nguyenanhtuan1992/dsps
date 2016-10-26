@@ -1,3 +1,4 @@
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%-- <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %> --%>
 <!DOCTYPE html>
@@ -27,10 +28,38 @@
             </ul>
             <div class="tab-content">
                 <div id="tabListPoliceContent">
-                    xxx
+                    <div class="panel-group" id="accordion">
+                        <c:forEach var="i" items="${listEvents}">
+                            <div class="panel panel-default">
+                                <div class="panel-heading">
+                                    <h4 class="panel-title">
+                                        <a data-toggle="collapse" data-parent="#accordion" href="#collapse${i.id}">Đơn vị ${i.id}</a>
+                                    </h4>
+                                </div>
+                                <div id="collapse${i.id}" class="panel-collapse collapse">
+                                    <div class="panel-body">List Polices in here</div>
+                                </div>
+                            </div>
+                        </c:forEach>
+                    </div>
                 </div>
                 <div id="tabListEventContent">
-                    yyy
+                    <nav>
+                        <div class="panel-group" id="accordion2">
+                            <c:forEach var="i" items="${listEvents}">
+                                <div class="panel panel-default">
+                                    <div class="panel-heading">
+                                        <h4 class="panel-title">
+                                            <a data-toggle="collapse" data-parent="#accordion" href="#collapse${i.id}">${i.name}</a>
+                                        </h4>
+                                    </div>
+                                    <div id="collapse${i.id}" class="panel-collapse collapse">
+                                        <div class="panel-body">Description for Event ${i.name} here</div>
+                                    </div>
+                                </div>
+                            </c:forEach>
+                        </div>
+                    </nav>
                 </div>
             </div>
         </div>
