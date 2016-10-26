@@ -18,6 +18,10 @@ body {
 	height: 100%;
 }
 
+.body-fixed {
+	overflow: hidden;
+}
+
 form {
 	margin: 0px;
 	padding: 0px;
@@ -1129,3 +1133,7 @@ ${pageContext.request.contextPath}
 /*  text-transform: uppercase; */
 }
 
+/* nav-tab customize */
+.nav-tabs > li {
+	width: 50%;
+}

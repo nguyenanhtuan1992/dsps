@@ -12,7 +12,7 @@
                     <ul class="dropdown-menu">
                         <li><a href="#" tabindex="0">Super Event management</a></li>
                         <li role="separator" class="divider"></li>
-                        <li><a href="#" tabindex="0">Delegation Management</a></li>
+                        <li><a href="${pageContext.request.contextPath}delegation/displayDelegation" tabindex="0">Delegation Management</a></li>
                         <li role="separator" class="divider"></li>
                         <li><a href="#" tabindex="0">Officials management</a></li>
                         <li role="separator" class="divider"></li>
