@@ -170,7 +170,7 @@ a:focus>.sf-sub-indicator, a:hover>.sf-sub-indicator, a:active>.sf-sub-indicator
 	background-color: #DCDCDC;
 }
 
-.panel-heading {
+.qp-panel-heading {
 	background-color:#7895cf !important;
 }
 
@@ -1136,4 +1136,9 @@ ${pageContext.request.contextPath}
 /* nav-tab customize */
 .nav-tabs > li {
 	width: 50%;
+}
+
+.nav-tabs > li.active > a {
+	background-color: #eee !important;
+	font-weight: bold !important;
 }
