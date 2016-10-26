@@ -22,7 +22,7 @@ public class Event {
     private Date endTime;
     @JsonProperty("prepare_time")
     @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd'T'HH:mm:ssX")
-    private Date prepare_time;
+    private Date prepareTime;
     private String description;
     private List<Delegation> delegations;
     private List<Barrier> barriers;
@@ -67,12 +67,12 @@ public class Event {
         this.endTime = endTime;
     }
 
-    public Date getPrepare_time() {
-        return prepare_time;
+    public Date getPrepareTime() {
+        return prepareTime;
     }
 
-    public void setPrepare_time(Date prepare_time) {
-        this.prepare_time = prepare_time;
+    public void setPrepareTime(Date prepareTime) {
+        this.prepareTime = prepareTime;
     }
 
     public String getDescription() {

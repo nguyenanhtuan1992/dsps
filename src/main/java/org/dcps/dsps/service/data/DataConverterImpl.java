@@ -1,6 +1,7 @@
 package org.dcps.dsps.service.data;
 
 import org.dcps.dsps.entity.dao.*;
+import org.postgresql.geometric.PGpoint;
 import org.springframework.stereotype.Service;
 
 import java.util.Date;
@@ -78,5 +79,84 @@ public class DataConverterImpl implements DataConverter {
         return image;
     }
 
+    @Override
+    public Place convertMapToPlace(Map row) {
+        Place place = new Place();
+        place.setId((Long) row.get("place_id"));
+        place.setName((String) row.get("place_name"));
+        place.setAddress((String) row.get("address"));
+        place.setHotline((String) row.get("hotline"));
+        place.setManagerName((String) row.get("manager_name"));
+        place.setManagerPhone((String) row.get("manager_phone"));
+        place.setCoordinate((PGpoint) row.get("coordinate"));
+        return place;
+    }
 
+    @Override
+    public Event convertMapToEvent(Map row) {
+        Event event = new Event();
+        event.setId((Long) row.get("sub_event_id"));
+        event.setSuperEventId((Long) row.get("super_event_id"));
+        event.setName((String) row.get("sub_event_name"));
+        event.setDescription((String) row.get("description"));
+        event.setStartTime((Date) row.get("start_time"));
+        event.setEndTime((Date) row.get("end_time"));
+        event.setPrepareTime((Date) row.get("prepare_time"));
+        return event;
+    }
+
+    @Override
+    public Badge convertMapToBadge(Map row) {
+        Badge badge = new Badge();
+        badge.setId((Long) row.get("badge_id"));
+        badge.setName((String) row.get("badge_name"));
+        return badge;
+    }
+
+    @Override
+    public PoliceType convertMapToPoliceType(Map row) {
+        PoliceType policeType = new PoliceType();
+        policeType.setId((Long) row.get("police_type_id"));
+        policeType.setName((String) row.get("police_type_name"));
+        return policeType;
+    }
+
+    @Override
+    public Organization convertMapToOrganization(Map row) {
+        Organization organization = new Organization();
+        organization.setId((Long) row.get("organization_id"));
+        organization.setName((String) row.get("organization_name"));
+        return organization;
+    }
+
+    @Override
+    public Police convertMapToPolice(Map row) {
+        Police police = new Police();
+        police.setId((Long) row.get("police_id"));
+        police.setName((String) row.get("police_name"));
+        police.setPhoneNumber((String) row.get("phone_number"));
+        police.setTalkieId((String) row.get("talkie_id"));
+
+        if (row.get("police_type_id") != null){
+            police.setPoliceType(convertMapToPoliceType(row));
+        }
+
+        if (row.get("organization_id") != null){
+            police.setOrganization(convertMapToOrganization(row));
+        }
+
+        if (row.get("badge_id") != null){
+            police.setBadge(convertMapToBadge(row));
+        }
+
+        if (row.get("position_id") != null){
+            police.setPosition(convertMapToPosition(row));
+        }
+
+        if (row.get("image_id") != null){
+            police.setImage(convertMapToImage(row));
+        }
+
+        return police;
+    }
 }

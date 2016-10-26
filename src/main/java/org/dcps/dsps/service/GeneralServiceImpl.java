@@ -1,8 +1,6 @@
 package org.dcps.dsps.service;
 
-import org.dcps.dsps.entity.dao.Delegation;
-import org.dcps.dsps.entity.dao.Officials;
-import org.dcps.dsps.entity.dao.SuperEvent;
+import org.dcps.dsps.entity.dao.*;
 import org.dcps.dsps.repository.GeneralRepository;
 import org.dcps.dsps.service.data.DataConverter;
 import org.slf4j.Logger;
@@ -88,5 +86,93 @@ public class GeneralServiceImpl implements GeneralService {
             }
         }
         return delegations;
+    }
+
+    @Override
+    public List<Place> getAllConferencePlacesOfSuperEvent(Long superEventId) {
+        List<Map> rowSet = generalRepository.getAllConferencePlacesOfSuperEvent(superEventId);
+        List<Place> places = null;
+        if (rowSet.size() > 0) {
+            places = new ArrayList<>();
+            for (Map row : rowSet){
+                places.add(dataConverter.convertMapToPlace(row));
+            }
+        }
+        return places;
+    }
+
+    @Override
+    public List<Event> getAllSubEventsOfSuperEvent(Long superEventId) {
+        List<Map> rowSet = generalRepository.getAllSubEventsOfSuperEvent(superEventId);
+        List<Event> events = null;
+        if (rowSet.size() > 0) {
+            events = new ArrayList<>();
+            for (Map row : rowSet){
+                events.add(dataConverter.convertMapToEvent(row));
+            }
+        }
+        return events;
+    }
+
+    @Override
+    public Event getSubEvent(Long subEventId) {
+        return dataConverter.convertMapToEvent(generalRepository.getSubEvent(subEventId));
+    }
+
+    @Override
+    public List<Police> getAllPolicesOfSubEvent(Long subEventId) {
+        List<Map> rowSet = generalRepository.getAllPolicesOfSubEvent(subEventId);
+        List<Police> polices = null;
+        if (rowSet.size() > 0) {
+            polices = new ArrayList<>();
+            for (Map row : rowSet){
+                polices.add(dataConverter.convertMapToPolice(row));
+            }
+        }
+        return polices;
+    }
+
+    @Override
+    public List<Organization> getAllOrganizationsOfSubEvent(Long subEventId) {
+        List<Map> rowSet = generalRepository.getAllOrganizationsOfSubEvent(subEventId);
+        List<Organization> organizations = null;
+        if (rowSet.size() > 0) {
+            organizations = new ArrayList<>();
+            for (Map row : rowSet){
+                organizations.add(dataConverter.convertMapToOrganization(row));
+            }
+        }
+        return organizations;
+    }
+
+    @Override
+    public List<Police> getAllPolicesOfOrganizationJoinSubEvent(Long subEventId, Long organizationId) {
+        List<Map> rowSet = generalRepository.getAllPolicesOfOrganizationJoinSubEvent(subEventId, organizationId);
+        List<Police> polices = null;
+        if (rowSet.size() > 0) {
+            polices = new ArrayList<>();
+            for (Map row : rowSet){
+                polices.add(dataConverter.convertMapToPolice(row));
+            }
+        }
+        return polices;
+    }
+
+    @Override
+    public Police getPolice(Long policeId) {
+        return dataConverter.convertMapToPolice(generalRepository.getPolice(policeId));
+    }
+
+    @Override
+    public List<Police> getAllPolicesOfRouteDelegationAndSubEvent(Long subEventId, Long delegationId, Long routeId) {
+        List<Map> rowSet = generalRepository.getAllPolicesOfRouteDelegationAndSubEvent(subEventId, delegationId, routeId);
+        List<Police> polices = null;
+        if (rowSet.size() > 0) {
+            polices = new ArrayList<>();
+            for (Map row : rowSet){
+                polices.add(dataConverter.convertMapToPolice(row));
+            }
+        }
+        return polices;
     }
 }

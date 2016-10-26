@@ -14,4 +14,10 @@ public interface DataConverter {
     Nation convertMapToNation(Map row);
     Position convertMapToPosition(Map row);
     Image convertMapToImage(Map row);
+    Place convertMapToPlace(Map row);
+    Event convertMapToEvent(Map row);
+    Badge convertMapToBadge(Map row);
+    PoliceType convertMapToPoliceType(Map row);
+    Organization convertMapToOrganization(Map row);
+    Police convertMapToPolice(Map row);
 }

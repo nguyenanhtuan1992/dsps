@@ -13,4 +13,12 @@ public interface GeneralRepository {
     List getAllDelegationsOfSuperEvent(Long superEventId);
     List getOfficialsesOfDelegation(Long delegationId);
     List getAllDelegationsOfSubEvent(Long subEventId);
+    List getAllConferencePlacesOfSuperEvent(Long superEventId);
+    List getAllSubEventsOfSuperEvent(Long superEventId);
+    Map getSubEvent(Long subEventId);
+    List getAllPolicesOfSubEvent(Long subEventId);
+    List getAllOrganizationsOfSubEvent(Long subEventId);
+    List getAllPolicesOfOrganizationJoinSubEvent(Long subEventId, Long organizationId);
+    Map getPolice(Long policeId);
+    List getAllPolicesOfRouteDelegationAndSubEvent(Long subEventId, Long delegationId, Long routeId);
 }

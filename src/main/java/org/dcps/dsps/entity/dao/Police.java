@@ -17,6 +17,7 @@ public class Police {
     private String phoneNumber;
     @JsonProperty("talkie_id")
     private String talkieId;
+    private Image image;
 
     public Long getId() {
         return id;
@@ -80,5 +81,13 @@ public class Police {
 
     public void setTalkieId(String talkieId) {
         this.talkieId = talkieId;
+    }
+
+    public Image getImage() {
+        return image;
+    }
+
+    public void setImage(Image image) {
+        this.image = image;
     }
 }
