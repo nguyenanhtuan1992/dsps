@@ -46,7 +46,7 @@ var mapLayer = new ol.layer.Tile({
             ol.source.OSM.ATTRIBUTION
         ],
         /*url: '${mapUrl}/tiles/{z}/{x}/{y}.png'*/
-        url: 'http://localhost:8080/osm/tiles/{z}/{x}/{y}.png'
+        url: 'http://localhost:8082/{z}/{x}/{y}.png'
     })
 });
 
@@ -58,7 +58,7 @@ var map = new ol.Map({
     view: new ol.View({
         center: transform([108.187916, 16.053292]),
         minZoom: 12,
-        maxZoom: 17,
+        maxZoom: 19,
         zoom: 12
     })
 });

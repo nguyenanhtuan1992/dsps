@@ -342,7 +342,7 @@ a:focus>.sf-sub-indicator, a:hover>.sf-sub-indicator, a:active>.sf-sub-indicator
 	{
 	/* font-size: 12px;
 	padding: 2px; */
-	
+
 }
 
 .qp-table-infor>tbody>tr>th {
@@ -515,7 +515,7 @@ Template
 }
 
 .qp-input-textarea {
-	
+
 }
 
 .qp-div-action-select {
@@ -1106,13 +1106,13 @@ ${pageContext.request.contextPath}
 
 /* Map */
 .map {
-    height: 98vh;
-    border: 1px solid black;
+    height: 100vh;
+    /*border: 1px solid black;*/
 }
 
 .infor-tab {
 	height: 98vh;
-	border: 1px solid black;
+	/*border: 1px solid black;*/
 	text-align: left;
 	padding: 5px 5px 5px 5px;
 	overflow-y: scroll;
@@ -1141,4 +1141,13 @@ ${pageContext.request.contextPath}
 .nav-tabs > li.active > a {
 	background-color: #eee !important;
 	font-weight: bold !important;
+}
+
+.nopadding {
+	padding: 0 !important;
+	margin: 0 !important;
+}
+
+* {
+	border-radius: 0 !important;
 }
