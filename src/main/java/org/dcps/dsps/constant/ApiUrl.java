@@ -1,4 +1,4 @@
-package org.dcps.dsps.Constant;
+package org.dcps.dsps.constant;
 
 /**
  * Created by ptanh2 on 10/24/2016.
