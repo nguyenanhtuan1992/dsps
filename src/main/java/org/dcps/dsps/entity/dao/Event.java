@@ -26,6 +26,7 @@ public class Event {
     private String description;
     private List<Delegation> delegations;
     private List<Barrier> barriers;
+    private List<Police> polices;
 
     public Long getId() {
         return id;
@@ -97,5 +98,13 @@ public class Event {
 
     public void setBarriers(List<Barrier> barriers) {
         this.barriers = barriers;
+    }
+
+    public List<Police> getPolices() {
+        return polices;
+    }
+
+    public void setPolices(List<Police> polices) {
+        this.polices = polices;
     }
 }
