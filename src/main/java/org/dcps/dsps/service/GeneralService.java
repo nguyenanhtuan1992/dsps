@@ -22,4 +22,5 @@ public interface GeneralService {
     List<Police> getAllPolicesOfOrganizationJoinSubEvent(Long subEventId, Long organizationId);
     Police getPolice(Long policeId);
     List<Police> getAllPolicesOfRouteDelegationAndSubEvent(Long subEventId, Long delegationId, Long routeId);
+    List<Event> getAllSubEventOfDelegation(Long id);
 }
