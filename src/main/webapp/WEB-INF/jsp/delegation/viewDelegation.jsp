@@ -5,12 +5,11 @@
 
 <head>
     <title>Thông tin đoàn</title>
-    <link rel="shortcut icon" href="${pageContext.request.contextPath}/images/logo.png"/>
+    <jsp:include page="../common/masterPage.jsp"/>
 </head>
 
-<body>
+<body class="body-fixed">
 <%-- Main Menu --%>
-<jsp:include page="../common/masterPage.jsp"/>
 <jsp:include page="../common/header.jsp"/>
 <%-- Main content --%>
 <div class="container-fluid">
@@ -18,24 +17,43 @@
         <div id="map" class="col-lg-9 map"></div>
         <div id="infor-tab" class="col-lg-3 infor-tab multi-tab">
             <ul class="nav nav-tabs">
-                <li class="active"><a data-toggle="tab" href="#tabDelegationPolice">Danh sách bảo vệ</a></li>
-                <li><a data-toggle="tab" href="#tabDelegationSubEvent">Danh sách sự kiện</a></li>
+                <li style="width: 33%;"><a data-toggle="tab" href="#tabDelegationPolice">Lực lượng bảo vệ</a></li>
+                <li style="width: 33%;"><a data-toggle="tab" href="#tabDelegationSubEvent">Danh sách sự kiện</a></li>
+                <li class="active" style="width: 34%;"><a data-toggle="tab" href="#tabDelegationDetail">Thông tin đoàn</a></li>
             </ul>
             <div class="tab-content">
                 <div id="tabDelegationPolice" class="tab-pane fade in active panel-group">
                     <div class="panel-group" id="accordionPolice">
-                        <c:forEach var="i" items="${listEvents}">
-                            <div class="panel panel-default">
-                                <div class="panel-heading">
-                                    <h4 class="panel-title">
-                                        <a data-toggle="collapse" data-parent="#accordionPolice" href="#collapsePolice${i.id}">Đơn vị ${i.id}</a>
-                                    </h4>
-                                </div>
-                                <div id="collapsePolice${i.id}" class="panel-collapse collapse">
-                                    <div class="panel-body">List Polices in here</div>
-                                </div>
-                            </div>
-                        </c:forEach>
+                        <h4>${currentEvent.name}</h4>
+                            <c:forEach var="i" items="${listOrganizationEvent}">
+                                    <div class="panel panel-default">
+                                        <div class="panel-heading">
+                                            <h4 class="panel-title">
+                                                <a data-toggle="collapse" data-parent="#accordionPolice" href="#collapsePolice<c:out value="${i.id}"/>"><c:out value="${i.name}"/></a>
+                                            </h4>
+                                        </div>
+                                        <div id="collapsePolice${i.id}" class="panel-collapse collapse">
+                                            <div class="panel-body">
+                                                <c:if test="${currentEvent.polices != null}">
+                                                    <table class="table table-hover" style="width: 100%;">
+                                                        <colgroup>
+                                                            <col width="85%">
+                                                            <col width="15%">
+                                                        </colgroup>
+                                                        <c:forEach var="police" items="${currentEvent.polices}">
+                                                            <c:if test="${i.id == police.organization.id}">
+                                                                    <tr>
+                                                                        <td><a href="#">${police.name}</a></td>
+                                                                        <td style="text-align: center"><a href="#"><span title="Thông tin" class="glyphicon glyphicon-info-sign"></span></a></td>
+                                                                    </tr>
+                                                            </c:if>
+                                                        </c:forEach>
+                                                    </table>
+                                                </c:if>
+                                            </div>
+                                        </div>
+                                    </div>
+                            </c:forEach>
                     </div>
                 </div>
                 <div id="tabDelegationSubEvent" class="tab-pane fade in panel-group">
@@ -54,61 +72,46 @@
                             </c:forEach>
                         </div>
                 </div>
-            </div>
-        </div>
-    </div>
-    <div id="delegationDetail" class="row mgt10">
-        <div class="col-lg-9">
-            <div class="panel panel-default">
-                <div class="panel-heading qp-panel-heading">
-                    <span aria-hidden="true" class="glyphicon qp-heading-icon">&nbsp;</span>
-                    <span class="qp-heading-text">Thông tin đoàn</span>
-                </div>
-                <div class="panel-body">
+                <div id="tabDelegationDetail" class="tab-pane fade in panel-group">
                     <table class="table table-bordered qp-table-infor">
                         <colgroup>
-                            <col width="20%">
-                            <col width="30%">
-                            <col width="20%">
-                            <col width="30%">
+                            <col width="40%">
+                            <col width="60%">
                         </colgroup>
-                        <tbody>
                         <tr>
                             <th><label>Tên đoàn</label></th>
                             <td>${delegation.name}</td>
-                            <th><label>Ngày đến</label></th>
-                            <td>25/09/2017</td>
-                        </tr>
-                        <tr>
-                            <th><label>Trưởng đoàn</label></th>
-                            <td><a href="#">Leader</a></td>
-                            <th><label>Ngày đi</label></th>
-                            <td>03/11/2017</td>
                         </tr>
                         <tr>
                             <th><label>Quốc gia</label></th>
                             <td>${delegation.nation.name}</td>
-                            <th><label>Thông tin liên hệ</label></th>
-                            <td>Contact them</td>
+                        </tr>
+                        <tr>
+                            <th><label>Trưởng đoàn</label></th>
+                            <td><a href="#">Leader's Name</a></td>
+                        </tr>
+                        <tr>
+                            <th><label>Thời gian lưu trú</label></th>
+                            <td>25/09/2017 - 03/11/2017</td>
                         </tr>
                         <tr>
                             <th><label>Tổng số thành viên</label></th>
                             <td><a href="#">9 thành viên</a></td>
+                        </tr>
+                        <tr>
                             <th><label>Nơi cư trú</label></th>
                             <td>Khách sạn Bông Hồng Vàng</td>
                         </tr>
-                        </tbody>
+                        <tr>
+                            <th><label>Thông tin liên hệ</label></th>
+                            <td><a href="#">Contact them</a></td>
+                        </tr>
                     </table>
                 </div>
+            </div>
         </div>
     </div>
 </div>
-<script>
-$(document).ready(function(){
-    $('#tabListEventContent').hide();
-});
-</script>
-
 <script type="text/javascript" src="${pageContext.request.contextPath}/js/source/map/map.js"></script>
 </body>
 </html>

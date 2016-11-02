@@ -11,9 +11,9 @@
                 <li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button"
                                         aria-haspopup="true" aria-expanded="false">Event <span class="caret"></span></a>
                     <ul class="dropdown-menu">
-                        <li><a href="#" tabindex="0">Super Event management</a></li>
+                        <li><a href="../home/superEvent" tabindex="0">Super Event management</a></li>
                         <li role="separator" class="divider"></li>
-                        <li><a href="${pageContext.request.contextPath}delegation/displayDelegation" tabindex="0">Delegation
+                        <li><a href="../delegation/displayDelegation" tabindex="0">Delegation
                             Management</a></li>
                         <li role="separator" class="divider"></li>
                         <li><a href="#" tabindex="0">Officials management</a></li>
@@ -68,12 +68,12 @@
             </ul>
             <ul class="nav navbar-nav navbar-right">
                 <li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button"
-                                        aria-haspopup="true" aria-expanded="false">APEC
+                                        aria-haspopup="true" aria-expanded="false">Hoi Nghi APEC
                     <span class="caret"></span></a>
                     <ul class="dropdown-menu">
-                        <li><a href="${pageContext.request.contextPath}home">Thong Tin</a></li>
+                        <li><a href="../home/superEvent">Thong Tin</a></li>
                         <li role="separator" class="divider"></li>
-                        <li><a href="${pageContext.request.contextPath}index">Thay Doi</a></li>
+                        <li><a href="../home/index">Thay Doi</a></li>
                     </ul>
                 </li>
                 <li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button"

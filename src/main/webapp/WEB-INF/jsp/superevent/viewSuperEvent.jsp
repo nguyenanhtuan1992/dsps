@@ -1,23 +1,23 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <!DOCTYPE html>
 <html>
 
 <head>
     <title>Da Nang</title>
-    <link rel="shortcut icon" href="${pageContext.request.contextPath}/images/logo.png"/>
+    <jsp:include page="../common/masterPage.jsp"/>
 </head>
 
 <body class="body-fixed">
 <%-- Main Menu --%>
-<jsp:include page="common/masterPage.jsp"/>
-<jsp:include page="common/header.jsp"/>
+<jsp:include page="../common/header.jsp"/>
 <%-- Main content --%>
 <div class="container-fluid">
-    <div class="row">
-        <div id="map" class="col-lg-9 map nopadding"></div>
-        <div id="infor-tab" class="col-lg-3 infor-tab single-tab nopadding">
-            <table id="super-event-info" class="table table-striped table-info-vertical">
+    <div class = "row">
+        <div id="map" class="col-lg-9 map"></div>
+        <div id="infor-tab" class="col-lg-3 infor-tab single-tab">
+            <table id = "super-event-info" class="table table-striped table-info-vertical">
                 <colgroup>
                     <col width="40%"/>
                     <col width="60%"/>
@@ -28,7 +28,9 @@
                 </tr>
                 <tr>
                     <th>Thời gian</th>
-                    <td>${superEventOutputForm.startTime} - ${superEventOutputForm.endTime}</td>
+                    <td>
+                        <fmt:formatDate pattern="dd/MM/yyyy" value="${superEventOutputForm.startTime}"/> - <fmt:formatDate pattern="dd/MM/yyyy" value="${superEventOutputForm.endTime}"/>
+                    </td>
                 </tr>
                 <tr>
                     <th colspan="2">Thông tin chi tiết</th>
@@ -192,7 +194,6 @@
         </div>
     </div>
 </div>
-
 <script type="text/javascript" src="${pageContext.request.contextPath}/js/source/map/map.js"></script>
 </body>
 </html>
