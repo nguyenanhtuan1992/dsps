@@ -20,6 +20,7 @@ public class Place {
     private PGpoint coordinate;
     private List<Image> images;
     private List<Police> polices;
+    private List<Event> events;
 
     public Long getId() {
         return id;
@@ -91,5 +92,13 @@ public class Place {
 
     public void setPolices(List<Police> polices) {
         this.polices = polices;
+    }
+
+    public List<Event> getEvents() {
+        return events;
+    }
+
+    public void setEvents(List<Event> events) {
+        this.events = events;
     }
 }

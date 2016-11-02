@@ -1,11 +1,14 @@
 package org.dcps.dsps.controller;
 
-import org.dcps.dsps.entity.dao.Event;
-import org.dcps.dsps.entity.dao.Organization;
-import org.dcps.dsps.entity.dao.Police;
+import org.dcps.dsps.entity.dao.*;
+import org.dcps.dsps.service.GeneralService;
+import org.dcps.dsps.utils.DateUtils;
+import org.dcps.dsps.utils.FunctionUtils;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
+import org.springframework.util.CollectionUtils;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import java.util.*;
@@ -18,37 +21,46 @@ import static org.springframework.web.bind.annotation.RequestMethod.GET;
 
 @Controller
 @RequestMapping("delegation")
-public class DelegationController {
+public class DelegationController extends BaseController{
     private static final String DELEGATION_INFOR = "delegation/viewDelegation";
 
     @Value("${map.url}")
     String mapUrl;
 
-    @RequestMapping(value = "displayDelegation", method = GET)
-    public String displayDelegation(ModelMap modelMap) {
+    @Autowired
+    GeneralService generalService;
 
-        /* dummy data */
-        List<Event> listEvents = new ArrayList<Event>();
-        Event event = null;
-        List<Police> listPolice = new ArrayList<Police>();
-        Police police = null;
-        Organization organization = new Organization();
-        for(int temp = 0; temp < 3; temp ++){
-            event =  new Event();
-            event.setId(Long.valueOf(temp));
-            event.setName("Event " + temp);
-            /*for (int i = 0; i < 10; i++){
-                organization.setName("PC" + i);
-                police = new Police();
-                police.setName("Police " + temp + i);
-                police.setOrganization(organization);
-            }*/
-           /* event.setPolices(listPolice);*/
-            listEvents.add(event);
+    @RequestMapping(value = "displayDelegation", method = GET)
+    public String displayDelegation(ModelMap modelMap, Delegation delegationInputForm) {
+
+        Delegation delegation = generalService.getDelegation(delegationInputForm.getId());
+        List<Event> listEvents = generalService.getAllSubEventOfDelegation(delegationInputForm.getId());
+        /* set data to view, set current Event default is the Event nearest now. List Event is ordered by Time Start */
+        Event currentEvent = null;
+        int i = 0;
+        int sizeEvents = listEvents.size();
+        while ((i < sizeEvents) && (DateUtils.compareDate(DateUtils.getCurrentDate(), listEvents.get(i).getStartTime()) < 0)) {
+            i++;
+        }
+        if(i == sizeEvents) {  // it means all events does not starts
+            currentEvent = listEvents.get(0);
+        } else {
+            currentEvent = listEvents.get(i);
         }
 
+        //Set list Organization protect specific event
+        List<Organization> listOrganizationEvent = new ArrayList<Organization>();
+        List<Long> listOrgId = new ArrayList<Long>();
+        for (Police police : currentEvent.getPolices()){
+            if(!listOrgId.contains(police.getOrganization().getId())){
+                listOrgId.add(police.getOrganization().getId());
+                listOrganizationEvent.add(police.getOrganization());
+            }
+        }
 
-        /* set data to view */
+        modelMap.put("currentEvent", currentEvent);
+        modelMap.put("listOrganizationEvent", listOrganizationEvent);
+        modelMap.put("delegation", delegation);
         modelMap.put("listEvents", listEvents);
         modelMap.put("mapUrl", mapUrl);
         return DELEGATION_INFOR;

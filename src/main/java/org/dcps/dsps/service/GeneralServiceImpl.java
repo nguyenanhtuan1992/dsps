@@ -240,6 +240,7 @@ public class GeneralServiceImpl implements GeneralService {
                 police = new Police();
                 police.setName("Police " + temp + i);
                 police.setOrganization(organization);
+                listPolices.add(police);
             }
             event.setPolices(listPolices);
             listEvents.add(event);

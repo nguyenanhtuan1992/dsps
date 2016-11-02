@@ -1,13 +1,19 @@
 package org.dcps.dsps.controller;
 
 import org.dcps.dsps.entity.dao.SuperEvent;
+import org.dcps.dsps.service.GeneralService;
 import org.dcps.dsps.utils.DateUtils;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import static org.springframework.web.bind.annotation.RequestMethod.GET;
+import static org.springframework.web.bind.annotation.RequestMethod.POST;
 
 /**
  * Created by Cicada on 10/23/2016.
@@ -15,28 +21,22 @@ import static org.springframework.web.bind.annotation.RequestMethod.GET;
 
 @Controller
 @RequestMapping("home")
-public class HomeController {
+public class HomeController extends BaseController{
     private static final String INDEX_PAGE = "index";
-    private static final String HOME_PAGE = "home";
 
     @Value("${map.url}")
     String mapUrl;
 
+    @Autowired
+    GeneralService generalService;
+
+
     @RequestMapping(value = "index", method = GET)
     public String index(ModelMap modelMap) {
+        List<SuperEvent> listSuperEvents = generalService.getAllSuperEvents();
+        modelMap.put("superEventInputForm", new SuperEvent());
+        modelMap.put("listSuperEvents", listSuperEvents);
         modelMap.put("mapUrl", mapUrl);
         return INDEX_PAGE;
-    }
-
-    @RequestMapping(value = "superEvent", method = GET)
-    public String superEvent(ModelMap modelMap) {
-        SuperEvent superEvent = new SuperEvent();
-        superEvent.setId(1l);
-        superEvent.setName("Hoi Nghi APEC");
-        superEvent.setStartTime(DateUtils.convertStringToDate("01/09/2017", "dd/MM/yyyy"));
-        superEvent.setEndTime(DateUtils.convertStringToDate("30/09/2017", "dd/MM/yyyy"));
-        modelMap.put("mapUrl", mapUrl);
-        modelMap.put("superEventOutputForm", superEvent);
-        return HOME_PAGE;
     }
 }

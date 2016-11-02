@@ -37,4 +37,22 @@ public class DateUtils {
         }
         return date;
     }
+
+    /**
+     * get current Date
+     * @return
+     */
+    public static Date getCurrentDate(){
+        return new Date();
+    }
+
+    /**
+     * compare Date vs Date
+     * @param dateInput1
+     * @param dateInput2
+     * @return return -1 if dateInput1 < dateInput2, 0 if dateInput1 = dateInput2, 1 if dateInput1 > dateInput2
+     */
+    public static int compareDate(Date dateInput1, Date dateInput2){
+        return Long.compare(dateInput1.getTime(), dateInput2.getTime());
+    }
 }
