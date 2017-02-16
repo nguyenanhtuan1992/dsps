@@ -3,6 +3,7 @@ package org.dcps.dsps.controller;
 import org.dcps.dsps.constant.ApiUrl;
 import org.dcps.dsps.entity.dao.SuperEvent;
 import org.dcps.dsps.service.GeneralService;
+import org.dcps.dsps.service.SuperEventService;
 import org.dcps.dsps.utils.SessionUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
@@ -26,7 +27,7 @@ public class SuperEventController extends BaseController{
     String mapUrl;
 
     @Autowired
-    GeneralService generalService;
+    SuperEventService superEventService;
 
     @RequestMapping(value = "displaySuperEvent", method = POST)
     public String superEvent(SuperEvent superEventInputForm, ModelMap modelMap) {
@@ -34,7 +35,7 @@ public class SuperEventController extends BaseController{
             return ApiUrl.ERROR_PAGE;
         }
         SessionUtils.set(SessionUtils.CURRENT_SUPER_EVENT, superEventInputForm);
-        SuperEvent superEvent = generalService.getSuperEvent(superEventInputForm.getId());
+        SuperEvent superEvent = superEventService.getSuperEvent(superEventInputForm.getId());
         modelMap.put("mapUrl", mapUrl);
         modelMap.put("superEventOutputForm", superEvent);
         return SUPEREVENT_INFOR;

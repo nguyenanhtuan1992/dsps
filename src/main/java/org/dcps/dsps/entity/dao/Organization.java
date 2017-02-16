@@ -22,4 +22,15 @@ public class Organization {
     public void setName(String name) {
         this.name = name;
     }
+
+    @Override
+    public boolean equals(Object obj) {
+        Organization org = (Organization) obj;
+        return id.equals(org.getId());
+    }
+
+    @Override
+    public int hashCode() {
+        return id.hashCode();
+    }
 }

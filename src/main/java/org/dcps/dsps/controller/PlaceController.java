@@ -4,7 +4,8 @@ import org.dcps.dsps.entity.dao.Event;
 import org.dcps.dsps.entity.dao.Organization;
 import org.dcps.dsps.entity.dao.Place;
 import org.dcps.dsps.entity.dao.Police;
-import org.dcps.dsps.service.GeneralService;
+import org.dcps.dsps.service.PlaceService;
+import org.dcps.dsps.service.SubEventService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Controller;
@@ -27,7 +28,10 @@ public class PlaceController extends BaseController{
     String mapUrl;
 
     @Autowired
-    GeneralService generalService;
+    PlaceService placeService;
+
+    @Autowired
+    SubEventService subeventService;
 
     @RequestMapping(value = "displayPlace", method = GET)
     public String displayPlace(ModelMap modelMap) {
@@ -45,7 +49,7 @@ public class PlaceController extends BaseController{
             police.setOrganization(organization);
         }
 
-        List<Event> listEvents = generalService.getAllSubEventOfDelegation(1l);
+        List<Event> listEvents = subeventService.getAllSubEventOfDelegation(1l);
 
         place.setEvents(listEvents);
         place.setPolices(polices);

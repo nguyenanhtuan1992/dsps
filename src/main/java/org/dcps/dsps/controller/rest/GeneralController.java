@@ -1,5 +1,7 @@
 package org.dcps.dsps.controller.rest;
 
+import com.fasterxml.jackson.annotation.JsonView;
+import org.dcps.dsps.entity.dao.Police;
 import org.dcps.dsps.entity.dao.SuperEvent;
 import org.dcps.dsps.service.GeneralService;
 import org.slf4j.Logger;
@@ -9,6 +11,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import javax.swing.text.View;
 import java.util.List;
 
 import static org.springframework.web.bind.annotation.RequestMethod.GET;
@@ -31,5 +34,16 @@ public class GeneralController {
     @RequestMapping(value = "/getSuperEvent/{id}", method = GET)
     public SuperEvent getAllSuperEvents(@PathVariable Long id){
         return generalService.getSuperEvent(id);
+    }
+
+    //Get Police by Id
+    @RequestMapping(value = "/getPolice/{id}", method = GET)
+    public Police getPolice(@PathVariable Long id){
+        //dummy data
+        Police police = new Police();
+        police.setId(0l);
+        police.setName("TuanNN");
+        return police;
+        //return generalService.getPolice(id);
     }
 }
