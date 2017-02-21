@@ -1,9 +1,10 @@
-package org.dcps.dsps.service;
+package org.dcps.dsps.service.subevent;
 
 import org.dcps.dsps.entity.dao.Event;
 import org.dcps.dsps.entity.dao.Organization;
 import org.dcps.dsps.entity.dao.Police;
 import org.dcps.dsps.repository.SubEventRepository;
+import org.dcps.dsps.service.general.GeneralServiceImpl;
 import org.dcps.dsps.service.data.DataConverter;
 import org.dcps.dsps.utils.DateUtils;
 import org.slf4j.Logger;
@@ -18,7 +19,7 @@ import java.util.Map;
  * Created by Cicada on 2/16/2017.
  */
 public class SubEventServiceImpl implements SubEventService{
-    private static Logger logger = LoggerFactory.getLogger(GeneralServiceImpl.class);
+    private static Logger logger = LoggerFactory.getLogger(SubEventServiceImpl.class);
 
     @Autowired
     DataConverter dataConverter;
@@ -31,7 +32,11 @@ public class SubEventServiceImpl implements SubEventService{
         return dataConverter.convertMapToEvent(subEventRepository.getSubEvent(subEventId));
     }
 
-
+    /**
+     * get all sub events of specific Super event
+     *
+     * @param superEventId
+     */
     @Override
     public List<Event> getAllSubEventsOfSuperEvent(Long superEventId) {
         List<Map> rowSet = subEventRepository.getAllSubEventsOfSuperEvent(superEventId);
@@ -44,6 +49,7 @@ public class SubEventServiceImpl implements SubEventService{
         }
         return events;
     }
+
 
     /**
      * get events of Delegation

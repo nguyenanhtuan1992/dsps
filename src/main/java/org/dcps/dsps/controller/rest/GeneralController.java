@@ -1,9 +1,8 @@
 package org.dcps.dsps.controller.rest;
 
-import com.fasterxml.jackson.annotation.JsonView;
 import org.dcps.dsps.entity.dao.Police;
 import org.dcps.dsps.entity.dao.SuperEvent;
-import org.dcps.dsps.service.GeneralService;
+import org.dcps.dsps.service.general.GeneralService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -11,7 +10,6 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import javax.swing.text.View;
 import java.util.List;
 
 import static org.springframework.web.bind.annotation.RequestMethod.GET;

@@ -1,4 +1,4 @@
-package org.dcps.dsps.service;
+package org.dcps.dsps.service.police;
 
 import org.dcps.dsps.entity.dao.Police;
 

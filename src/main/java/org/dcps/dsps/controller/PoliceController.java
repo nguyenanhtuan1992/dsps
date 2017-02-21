@@ -1,7 +1,7 @@
 package org.dcps.dsps.controller;
 
 import org.dcps.dsps.entity.dao.Police;
-import org.dcps.dsps.service.PoliceService;
+import org.dcps.dsps.service.police.PoliceService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;

@@ -2,14 +2,12 @@ package org.dcps.dsps.controller;
 
 import org.dcps.dsps.entity.dao.*;
 import org.dcps.dsps.entity.dao.Police;
-import org.dcps.dsps.service.GeneralService;
+import org.dcps.dsps.service.general.GeneralService;
 import org.dcps.dsps.utils.DateUtils;
-import org.dcps.dsps.utils.FunctionUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
-import org.springframework.util.CollectionUtils;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import java.util.*;

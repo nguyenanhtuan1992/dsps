@@ -1,19 +1,16 @@
 package org.dcps.dsps.controller;
 
 import org.dcps.dsps.entity.dao.SuperEvent;
-import org.dcps.dsps.service.GeneralService;
-import org.dcps.dsps.utils.DateUtils;
+import org.dcps.dsps.service.general.GeneralService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestMapping;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import static org.springframework.web.bind.annotation.RequestMethod.GET;
-import static org.springframework.web.bind.annotation.RequestMethod.POST;
 
 /**
  * Created by Cicada on 10/23/2016.

@@ -1,7 +1,8 @@
-package org.dcps.dsps.service;
+package org.dcps.dsps.service.superevent;
 
 import org.dcps.dsps.entity.dao.SuperEvent;
 import org.dcps.dsps.repository.SuperEventRepository;
+import org.dcps.dsps.service.general.GeneralServiceImpl;
 import org.dcps.dsps.service.data.DataConverter;
 import org.dcps.dsps.utils.DateUtils;
 import org.slf4j.Logger;
@@ -16,7 +17,7 @@ import java.util.Map;
  * Created by Cicada on 2/16/2017.
  */
 public class SuperEventServiceImpl implements SuperEventService{
-    private static Logger logger = LoggerFactory.getLogger(GeneralServiceImpl.class);
+    private static Logger logger = LoggerFactory.getLogger(SuperEventServiceImpl.class);
 
     @Autowired
     DataConverter dataConverter;
@@ -57,7 +58,7 @@ public class SuperEventServiceImpl implements SuperEventService{
 
     @Override
     public SuperEvent getSuperEvent(Long superEventId) {
-        /*return dataConverter.convertMapToSuperEvent(generalRepository.getSuperEvent(superEventId));*/
+        /*return dataConverter.convertMapToSuperEvent(superEventRepository.getSuperEvent(superEventId));*/
         /* dummy data */
         SuperEvent superEvent = new SuperEvent();
         superEvent.setId(1l);

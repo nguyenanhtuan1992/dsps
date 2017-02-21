@@ -12,7 +12,7 @@ import java.util.Map;
  * Created by Cicada on 2/16/2017.
  */
 public class SubEventRepositoryImpl implements SubEventRepository{
-    private static Logger logger = LoggerFactory.getLogger(GeneralRepositoryImpl.class);
+    private static Logger logger = LoggerFactory.getLogger(SubEventRepositoryImpl.class);
 
     @Autowired
     JdbcTemplate defaultJdbcTemplate;
