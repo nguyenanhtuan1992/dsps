@@ -5,4 +5,5 @@ package org.dcps.dsps.constant;
  */
 public class Constant {
     public static final String PATTERN_DATE_DEFAULT = "dd/MM/yyyy";
+    public static final String STRING_EMPTY = "";
 }

@@ -1,6 +1,9 @@
 package org.dcps.dsps.service.subevent;
 
+import org.dcps.dsps.entity.dao.Delegation;
 import org.dcps.dsps.entity.dao.Event;
+import org.dcps.dsps.entity.dao.Organization;
+import org.dcps.dsps.entity.dao.Police;
 
 import java.util.List;
 
@@ -14,12 +17,17 @@ public interface SubEventService {
     Event getSubEvent(Long subEventId);
 
     /**
-     * get all sub events of specific Super event
+     * get all delegation of sub event
      * */
-    List<Event> getAllSubEventsOfSuperEvent(Long superEventId);
+    List<Delegation> getAllDelegationsOfSubEvent(Long subEventId);
 
     /**
-     * get all sub events of delegation
+     * get list polices by individual Sub Event
      * */
-    List<Event> getAllSubEventOfDelegation(Long id);
+    List<Police> getAllPolicesOfSubEvent(Long subEventId);
+
+    /**
+     * get organizations of sub event
+     * */
+    List<Organization> getAllOrganizationsOfSubEvent(Long subEventId);
 }

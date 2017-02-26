@@ -17,12 +17,28 @@
         <div id="map" class="col-lg-9 map"></div>
         <div id="infor-tab" class="col-lg-3 infor-tab multi-tab">
             <ul class="nav nav-tabs">
+                <li class="active" style="width: 33%;"><a data-toggle="tab" href="#tabDelegationSubEvent">Danh sách sự kiện</a></li>
                 <li style="width: 33%;"><a data-toggle="tab" href="#tabDelegationPolice">Lực lượng bảo vệ</a></li>
-                <li style="width: 33%;"><a data-toggle="tab" href="#tabDelegationSubEvent">Danh sách sự kiện</a></li>
-                <li class="active" style="width: 34%;"><a data-toggle="tab" href="#tabPlaceDetail">Thông tin địa điểm</a></li>
+                <li style="width: 34%;"><a data-toggle="tab" href="#tabPlaceDetail">Thông tin địa điểm</a></li>
             </ul>
             <div class="tab-content">
-                <div id="tabDelegationPolice" class="tab-pane fade in active panel-group">
+                <div id="tabDelegationSubEvent" class="tab-pane fade in active panel-group">
+                    <div class="panel-group"  id="accordionSubEvent">
+                        <c:forEach var="i" items="${place.events}">
+                            <div class="panel panel-default">
+                                <div class="panel-heading">
+                                    <h4 class="panel-title">
+                                        <a data-toggle="collapse" data-parent="#accordionSubEvent" href="#collapseSubEvent${i.id}">${i.name}</a>
+                                    </h4>
+                                </div>
+                                <div id="collapseSubEvent${i.id}" class="panel-collapse collapse">
+                                    <div class="panel-body">${i.description}</div>
+                                </div>
+                            </div>
+                        </c:forEach>
+                    </div>
+                </div>
+                <div id="tabDelegationPolice" class="tab-pane fade in panel-group">
                     <div class="panel-group" id="accordionPolice">
                         <h4>Current Event's Name</h4>
                         <c:forEach var="i" items="${place.events}">
@@ -34,22 +50,6 @@
                                 </div>
                                 <div id="collapsePolice${i.id}" class="panel-collapse collapse">
                                     <div class="panel-body">List Polices in here</div>
-                                </div>
-                            </div>
-                        </c:forEach>
-                    </div>
-                </div>
-                <div id="tabDelegationSubEvent" class="tab-pane fade in panel-group">
-                    <div class="panel-group"  id="accordionSubEvent">
-                        <c:forEach var="i" items="${place.events}">
-                            <div class="panel panel-default">
-                                <div class="panel-heading">
-                                    <h4 class="panel-title">
-                                        <a data-toggle="collapse" data-parent="#accordionSubEvent" href="#collapseSubEvent${i.id}">${i.name}</a>
-                                    </h4>
-                                </div>
-                                <div id="collapseSubEvent${i.id}" class="panel-collapse collapse">
-                                    <div class="panel-body">${i.description}</div>
                                 </div>
                             </div>
                         </c:forEach>

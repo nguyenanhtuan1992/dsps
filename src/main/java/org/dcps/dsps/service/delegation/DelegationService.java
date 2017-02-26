@@ -1,6 +1,8 @@
 package org.dcps.dsps.service.delegation;
 
 import org.dcps.dsps.entity.dao.Delegation;
+import org.dcps.dsps.entity.dao.Event;
+import org.dcps.dsps.entity.dao.Officials;
 import org.dcps.dsps.entity.dao.Organization;
 
 import java.util.List;
@@ -15,12 +17,12 @@ public interface DelegationService {
     Delegation getDelegation(Long delegationId);
 
     /**
-     * get all delegations of super event
+     * get all sub events of delegation
      * */
-    List<Delegation> getAllDelegationsOfSuperEvent(Long superEventId);
+    List<Event> getAllSubEventOfDelegation(Long delegationId);
 
     /**
-     * get all delegation of sub event
+     * get officials of Delegation
      * */
-    List<Delegation> getAllDelegationsOfSubEvent(Long subEventId);
+    List<Officials> getListOfficialsOfDelegation(Long delegationId);
 }

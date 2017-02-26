@@ -36,7 +36,7 @@ public class DelegationController extends BaseController{
     public String displayDelegation(ModelMap modelMap, Delegation delegationInputForm) {
 
         Delegation delegation = delegationService.getDelegation(delegationInputForm.getId());
-        List<Event> listEvents = subEventService.getAllSubEventOfDelegation(delegationInputForm.getId());
+        List<Event> listEvents = delegationService.getAllSubEventOfDelegation(delegationInputForm.getId());
         /* set data to view, set current Event default is the Event nearest now. List Event is ordered by Time Start */
         Event currentEvent = null;
         int i = 0;
@@ -49,23 +49,38 @@ public class DelegationController extends BaseController{
         } else {
             currentEvent = listEvents.get(i);
         }
-
+        List<Police> policesOfCurrentEvent = subEventService.getAllPolicesOfSubEvent(currentEvent.getId());
         //Set list Organization protect specific event
-        List<Organization> listOrganizationEvent = new ArrayList<Organization>();
-        List<Long> listOrgId = new ArrayList<Long>();
-        for (Police police : currentEvent.getPolices()){
-            if(!listOrgId.contains(police.getOrganization().getId())){
-                listOrgId.add(police.getOrganization().getId());
-                listOrganizationEvent.add(police.getOrganization());
-            }
-        }
+        List<Organization> listOrganizationsEvent = getListOrganizationFromPolices(policesOfCurrentEvent);
+
+        currentEvent.setOrganizations(listOrganizationsEvent);
 
         modelMap.put("currentEvent", currentEvent);
-        modelMap.put("listOrganizationEvent", listOrganizationEvent);
         modelMap.put("delegation", delegation);
         modelMap.put("listEvents", listEvents);
         modelMap.put("mapUrl", mapUrl);
         return DELEGATION_INFOR;
+    }
+
+
+    /**
+     * get list organizations from list police and sorted by ascending
+     * */
+    private List<Organization> getListOrganizationFromPolices(List<Police> polices){
+        List<Organization> organizations = new ArrayList<Organization>();
+        HashSet<Organization> hsOrganization = new HashSet<Organization>();
+        boolean flag = false;
+        for (Police police : polices){
+            flag = hsOrganization.add(police.getOrganization());
+            if (flag == true){
+                organizations.add(police.getOrganization());
+            } else {
+                //do nothing
+            }
+        }
+            /*Sort organizations*/
+        Collections.sort(organizations, Organization.sortAscendingName);
+        return organizations;
     }
 
 }

@@ -11,10 +11,5 @@ public interface PlaceService {
     /**
      * get specific place by id
      * */
-    Place getPlace(Long placeId);
-
-    /**
-     * get all conference places of super event
-     * */
-    List<Place> getAllConferencePlacesOfSuperEvent(Long superEventId);
+    DisplayPlaceOutputBean displayPlace(Long placeId);
 }

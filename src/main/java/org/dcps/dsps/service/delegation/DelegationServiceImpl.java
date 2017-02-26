@@ -1,11 +1,9 @@
 package org.dcps.dsps.service.delegation;
 
-import org.dcps.dsps.entity.dao.Delegation;
-import org.dcps.dsps.entity.dao.Nation;
-import org.dcps.dsps.entity.dao.Officials;
-import org.dcps.dsps.entity.dao.Place;
+import org.dcps.dsps.entity.dao.*;
 import org.dcps.dsps.repository.DelegationRepository;
 import org.dcps.dsps.service.data.DataConverter;
+import org.dcps.dsps.utils.DateUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -36,12 +34,13 @@ public class DelegationServiceImpl implements DelegationService{
     @Override
     public Delegation getDelegation(Long delegationId) {
         /*return dataConverter.convertMapToDelegation(generalRepository.getDelegation(delegationId));*/
+        Delegation delegation = delegationRepository.getDelegation(delegationId);
+
         /* dummy data */
         Nation nation = new Nation();
         nation.setId(1l);
         nation.setName("Hoa Kỳ");
 
-        Delegation delegation = new Delegation();
         delegation.setId(1l);
         delegation.setName("Đoàn Hoa Kỳ");
         delegation.setNation(nation);
@@ -50,39 +49,61 @@ public class DelegationServiceImpl implements DelegationService{
     }
 
     /**
-     * get all delegations of super event
+     * get all sub events of delegation
      *
-     * @param superEventId
+     * @param id
      */
     @Override
-    public List<Delegation> getAllDelegationsOfSuperEvent(Long superEventId) {
-        List<Map> rowSet = delegationRepository.getAllDelegationsOfSuperEvent(superEventId);
-        List<Delegation> delegations = null;
-        if (rowSet.size() > 0) {
-            delegations = new ArrayList<>();
-            for (Map row : rowSet){
-                delegations.add(dataConverter.convertMapToDelegation(row));
-            }
+    public List<Event> getAllSubEventOfDelegation(Long id) {
+        /* dummy data */
+        List<Event> listEvents = new ArrayList<Event>();
+        Event event = null;
+        List<Police> listPolices = new ArrayList<Police>();
+        Police police = null;
+        Organization organization = null;
+        Place place = new Place();
+        List<Police> polices = new ArrayList<Police>();
+
+        for (int i = 0; i < 10; i++){
+            organization = new Organization();
+            organization.setId((long) (i % 5 + 1));
+            organization.setName("PC" + i);
+            police = new Police();
+            police.setName("Police " + i);
+            police.setOrganization(organization);
         }
-        return delegations;
+        for(int temp = 0; temp < 3; temp ++){
+            event =  new Event();
+            event.setId(Long.valueOf(temp));
+            event.setName("Event name" + temp);
+            event.setStartTime(DateUtils.convertStringToDate("01/10/2017 10:00:00", "dd/MM/yyyy HH:mm:ss"));
+            event.setStartTime(DateUtils.convertStringToDate("01/10/2017 12:00:00","dd/MM/yyyy HH:mm:ss"));
+            event.setDescription("Description for event " + temp + " here");
+            for (int i = 0; i < 4; i++){
+                organization = new Organization();
+                organization.setId((long) (i % 5 + 1));
+                organization.setName("PC" + i);
+                police = new Police();
+                police.setId((long) (temp * i + i));
+                police.setName("Police " + temp + i);
+                police.setOrganization(organization);
+                listPolices.add(police);
+            }
+            event.setPolices(listPolices);
+            listEvents.add(event);
+        }
+        return listEvents;
     }
 
     /**
-     * get all delegation of sub event
+     * get officials of Delegation
      *
-     * @param subEventId
+     * @param delegationId
      */
     @Override
-    public List<Delegation> getAllDelegationsOfSubEvent(Long subEventId) {
-        List<Map> rowSet = delegationRepository.getAllDelegationsOfSubEvent(subEventId);
-        List<Delegation> delegations = null;
-        if (rowSet.size() > 0) {
-            delegations = new ArrayList<>();
-            for (Map row : rowSet){
-                delegations.add(dataConverter.convertMapToDelegation(row));
-            }
-        }
-        return delegations;
+    public List<Officials> getListOfficialsOfDelegation(Long delegationId) {
+        List<Officials> listOfficials = delegationRepository.getOfficialsOfDelegation(delegationId);
+        return listOfficials;
     }
 
 }

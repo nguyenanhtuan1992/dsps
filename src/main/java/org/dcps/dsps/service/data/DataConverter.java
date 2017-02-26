@@ -20,4 +20,5 @@ public interface DataConverter {
     PoliceType convertMapToPoliceType(Map row);
     Organization convertMapToOrganization(Map row);
     Police convertMapToPolice(Map row);
+    Route convertMapToRoute(Map row);
 }

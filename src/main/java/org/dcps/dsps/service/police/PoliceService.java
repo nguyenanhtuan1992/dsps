@@ -13,18 +13,4 @@ public interface PoliceService {
      * */
     Police getPolice(Long policeId);
 
-    /**
-     * get list polices by individual Sub Event
-     * */
-    List<Police> getAllPolicesOfSubEvent(Long subEventId);
-
-    /**
-     * get List polices of individual organization of specific event
-     * */
-    List<Police> getAllPolicesOfOrganizationJoinSubEvent(Long subEventId, Long organizationId);
-
-    /**
-     * get list polices of specific route of individual delegation of specific sub event
-     *  */
-    List<Police> getAllPolicesOfRouteDelegationAndSubEvent(Long subEventId, Long delegationId, Long routeId);
 }

@@ -1,7 +1,6 @@
 package org.dcps.dsps.controller;
 
 import org.dcps.dsps.entity.dao.SuperEvent;
-import org.dcps.dsps.service.general.GeneralService;
 import org.dcps.dsps.service.superevent.SuperEventService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;

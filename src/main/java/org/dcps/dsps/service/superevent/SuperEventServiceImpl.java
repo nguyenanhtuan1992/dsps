@@ -1,8 +1,10 @@
 package org.dcps.dsps.service.superevent;
 
+import org.dcps.dsps.entity.dao.Delegation;
+import org.dcps.dsps.entity.dao.Event;
+import org.dcps.dsps.entity.dao.Place;
 import org.dcps.dsps.entity.dao.SuperEvent;
 import org.dcps.dsps.repository.SuperEventRepository;
-import org.dcps.dsps.service.general.GeneralServiceImpl;
 import org.dcps.dsps.service.data.DataConverter;
 import org.dcps.dsps.utils.DateUtils;
 import org.slf4j.Logger;
@@ -56,6 +58,39 @@ public class SuperEventServiceImpl implements SuperEventService{
         superEvents.add(superEvent);
 
         return superEvents;
+    }
+
+    /**
+     * get all conference places of super event
+     *
+     * @param superEventId
+     */
+    @Override
+    public List<Place> getAllConferencePlacesOfSuperEvent(Long superEventId) {
+        List<Place> places = superEventRepository.getAllConferencePlacesOfSuperEvent(superEventId);
+        return places;
+    }
+
+    /**
+     * get all sub events of specific Super event
+     *
+     * @param superEventId
+     */
+    @Override
+    public List<Event> getAllSubEventsOfSuperEvent(Long superEventId) {
+        List<Event> events = superEventRepository.getAllSubEventsOfSuperEvent(superEventId);
+        return events;
+    }
+
+    /**
+     * get all delegations of super event
+     *
+     * @param superEventId
+     */
+    @Override
+    public List<Delegation> getAllDelegationsOfSuperEvent(Long superEventId) {
+        List<Delegation> delegations = superEventRepository.getAllDelegationsOfSuperEvent(superEventId);
+        return delegations;
     }
 
     @Override

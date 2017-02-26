@@ -24,9 +24,19 @@ public class Event {
     @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd'T'HH:mm:ssX")
     private Date prepareTime;
     private String description;
+    /**
+     * list Delegations attend this event
+     * */
     private List<Delegation> delegations;
     private List<Barrier> barriers;
+    /**
+     * list polices attend to protect this event
+     * */
     private List<Police> polices;
+    /**
+     * list organizations attend to protect this event
+     * */
+    private List<Organization> organizations;
 
     public Long getId() {
         return id;
@@ -106,5 +116,13 @@ public class Event {
 
     public void setPolices(List<Police> polices) {
         this.polices = polices;
+    }
+
+    public List<Organization> getOrganizations() {
+        return organizations;
+    }
+
+    public void setOrganizations(List<Organization> organizations) {
+        this.organizations = organizations;
     }
 }

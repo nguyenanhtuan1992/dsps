@@ -159,4 +159,10 @@ public class DataConverterImpl implements DataConverter {
 
         return police;
     }
+
+    @Override
+    public Route convertMapToRoute(Map row) {
+        Route route = new Route();
+        return route;
+    }
 }

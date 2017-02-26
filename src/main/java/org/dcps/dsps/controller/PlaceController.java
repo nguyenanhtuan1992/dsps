@@ -4,6 +4,7 @@ import org.dcps.dsps.entity.dao.Event;
 import org.dcps.dsps.entity.dao.Organization;
 import org.dcps.dsps.entity.dao.Place;
 import org.dcps.dsps.entity.dao.Police;
+import org.dcps.dsps.service.place.DisplayPlaceOutputBean;
 import org.dcps.dsps.service.place.PlaceService;
 import org.dcps.dsps.service.subevent.SubEventService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -34,26 +35,14 @@ public class PlaceController extends BaseController{
     SubEventService subeventService;
 
     @RequestMapping(value = "displayPlace", method = GET)
-    public String displayPlace(ModelMap modelMap) {
-        Place place = new Place();
-        List<Police> polices = new ArrayList<Police>();
-        Police police = null;
-        Organization organization = null;
+    public String displayPlace(ModelMap modelMap, Place place) {
 
-        for (int i = 0; i < 10; i++){
-            organization = new Organization();
-            organization.setId((long) (i % 5 + 1));
-            organization.setName("PC" + i);
-            police = new Police();
-            police.setName("Police " + i);
-            police.setOrganization(organization);
-        }
+        /*List<Event> listEvents = subeventService.getAllSubEventOfDelegation(1l);*/
+        DisplayPlaceOutputBean displayPlaceOutput = placeService.displayPlace(place.getId());
 
-        List<Event> listEvents = subeventService.getAllSubEventOfDelegation(1l);
 
-        place.setEvents(listEvents);
-        place.setPolices(polices);
-        modelMap.put("place", place);
+        modelMap.put("place", displayPlaceOutput.getPlace());
+        modelMap.put("organizations", displayPlaceOutput.getOrganizations());
         modelMap.put("mapUrl", mapUrl);
         return PLACE_INFOR;
     }

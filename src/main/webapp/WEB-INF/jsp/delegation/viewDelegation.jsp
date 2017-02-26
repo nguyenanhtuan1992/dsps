@@ -6,6 +6,7 @@
 <head>
     <title>Thông tin đoàn</title>
     <jsp:include page="../common/masterPage.jsp"/>
+    <script type="text/javascript" src="${pageContext.request.contextPath}/js/source/delegation.js"></script>
 </head>
 
 <body class="body-fixed">
@@ -17,46 +18,12 @@
         <div id="map" class="col-lg-9 map"></div>
         <div id="infor-tab" class="col-lg-3 infor-tab multi-tab">
             <ul class="nav nav-tabs">
+                <li class="active" style="width: 33%;"><a data-toggle="tab" href="#tabDelegationSubEvent">Danh sách sự kiện</a></li>
                 <li style="width: 33%;"><a data-toggle="tab" href="#tabDelegationPolice">Lực lượng bảo vệ</a></li>
-                <li style="width: 33%;"><a data-toggle="tab" href="#tabDelegationSubEvent">Danh sách sự kiện</a></li>
-                <li class="active" style="width: 34%;"><a data-toggle="tab" href="#tabDelegationDetail">Thông tin đoàn</a></li>
+                <li style="width: 34%;"><a data-toggle="tab" href="#tabDelegationDetail">Thông tin đoàn</a></li>
             </ul>
             <div class="tab-content">
-                <div id="tabDelegationPolice" class="tab-pane fade in active panel-group">
-                    <div class="panel-group" id="accordionPolice">
-                        <h4>${currentEvent.name}</h4>
-                            <c:forEach var="i" items="${listOrganizationEvent}">
-                                    <div class="panel panel-default">
-                                        <div class="panel-heading">
-                                            <h4 class="panel-title">
-                                                <a data-toggle="collapse" data-parent="#accordionPolice" href="#collapsePolice<c:out value="${i.id}"/>"><c:out value="${i.name}"/></a>
-                                            </h4>
-                                        </div>
-                                        <div id="collapsePolice${i.id}" class="panel-collapse collapse">
-                                            <div class="panel-body">
-                                                <c:if test="${currentEvent.polices != null}">
-                                                    <table class="table table-hover" style="width: 100%;">
-                                                        <colgroup>
-                                                            <col width="85%">
-                                                            <col width="15%">
-                                                        </colgroup>
-                                                        <c:forEach var="police" items="${currentEvent.polices}">
-                                                            <c:if test="${i.id == police.organization.id}">
-                                                                    <tr>
-                                                                        <td><a href="#">${police.name}</a></td>
-                                                                        <td style="text-align: center"><a href="#"><span title="Thông tin" class="glyphicon glyphicon-info-sign"></span></a></td>
-                                                                    </tr>
-                                                            </c:if>
-                                                        </c:forEach>
-                                                    </table>
-                                                </c:if>
-                                            </div>
-                                        </div>
-                                    </div>
-                            </c:forEach>
-                    </div>
-                </div>
-                <div id="tabDelegationSubEvent" class="tab-pane fade in panel-group">
+                <div id="tabDelegationSubEvent" class="tab-pane fade in active panel-group">
                         <div class="panel-group"  id="accordionSubEvent">
                             <c:forEach var="i" items="${listEvents}">
                                 <div class="panel panel-default">
@@ -71,6 +38,40 @@
                                 </div>
                             </c:forEach>
                         </div>
+                </div>
+                <div id="tabDelegationPolice" class="tab-pane fade in panel-group">
+                    <div class="panel-group" id="accordionPolice">
+                        <h4>${currentEvent.name}</h4>
+                        <c:forEach var="i" items="${currentEvent.organizations}">
+                            <div class="panel panel-default">
+                                <div class="panel-heading">
+                                    <h4 class="panel-title">
+                                        <a data-toggle="collapse" data-parent="#accordionPolice" href="#collapsePolice<c:out value="${i.id}"/>"><c:out value="${i.name}"/></a>
+                                    </h4>
+                                </div>
+                                <div id="collapsePolice${i.id}" class="panel-collapse collapse">
+                                    <div class="panel-body">
+                                        <c:if test="${currentEvent.polices != null}">
+                                            <table class="table table-hover" style="width: 100%;">
+                                                <colgroup>
+                                                    <col width="85%">
+                                                    <col width="15%">
+                                                </colgroup>
+                                                <c:forEach var="police" items="${currentEvent.polices}">
+                                                    <c:if test="${i.id == police.organization.id}">
+                                                        <tr>
+                                                            <td><a href="#" onclick="getPoliceDetail(${police.id})">${police.name}</a></td>
+                                                            <td style="text-align: center"><a href="#" onclick="displayPoliceInfor(${police.id})"><span title="Thông tin" class="glyphicon glyphicon-info-sign"></span></a></td>
+                                                        </tr>
+                                                    </c:if>
+                                                </c:forEach>
+                                            </table>
+                                        </c:if>
+                                    </div>
+                                </div>
+                            </div>
+                        </c:forEach>
+                    </div>
                 </div>
                 <div id="tabDelegationDetail" class="tab-pane fade in panel-group">
                     <table class="table table-bordered qp-table-infor">
