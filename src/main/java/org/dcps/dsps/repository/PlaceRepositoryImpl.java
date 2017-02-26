@@ -4,17 +4,19 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
+import org.springframework.stereotype.Repository;
 
 import java.util.List;
 
 /**
  * Created by Cicada on 2/16/2017.
  */
+@Repository
 public class PlaceRepositoryImpl implements PlaceRepository{
     private static Logger logger = LoggerFactory.getLogger(PlaceRepositoryImpl.class);
 
     @Autowired
-    JdbcTemplate defaultJdbcTemplate;
+    JdbcTemplate jdbcTemplate;
 
     @Override
     public List getAllConferencePlacesOfSuperEvent(Long superEventId) {
@@ -26,7 +28,7 @@ public class PlaceRepositoryImpl implements PlaceRepository{
                 "    INNER JOIN sub_event ON event_delegation.event_id = sub_event.sub_event_id " +
                 "    WHERE sub_event.super_event_id = 1 " +
                 "    )";
-        return defaultJdbcTemplate.queryForList(sql, superEventId);
+        return jdbcTemplate.queryForList(sql, superEventId);
     }
 
 

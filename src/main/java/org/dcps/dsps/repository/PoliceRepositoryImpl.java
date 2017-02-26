@@ -4,6 +4,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
+import org.springframework.stereotype.Repository;
 
 import java.util.List;
 import java.util.Map;
@@ -11,11 +12,12 @@ import java.util.Map;
 /**
  * Created by Cicada on 2/16/2017.
  */
+@Repository
 public class PoliceRepositoryImpl implements PoliceRepository{
     private static Logger logger = LoggerFactory.getLogger(PoliceRepositoryImpl.class);
 
     @Autowired
-    JdbcTemplate defaultJdbcTemplate;
+    JdbcTemplate jdbcTemplate;
 
     @Override
     public Map getPolice(Long policeId) {
@@ -28,7 +30,7 @@ public class PoliceRepositoryImpl implements PoliceRepository{
                 "INNER JOIN position ON police.position_id = position.position_id\n" +
                 "INNER JOIN organization ON police.organization_id = organization.organization_id\n" +
                 "WHERE police_id = ?";
-        return defaultJdbcTemplate.queryForMap(sql, policeId);
+        return jdbcTemplate.queryForMap(sql, policeId);
     }
 
     @Override
@@ -44,7 +46,7 @@ public class PoliceRepositoryImpl implements PoliceRepository{
                 "INNER JOIN event_delegation_police ON police.police_id = event_delegation_police.police_id " +
                 "INNER JOIN event_delegation ON event_delegation_police.event_delegation_id = event_delegation.event_delegation_id " +
                 "WHERE event_delegation.event_id = ?";
-        return defaultJdbcTemplate.queryForList(sql, sql);
+        return jdbcTemplate.queryForList(sql, sql);
     }
 
     @Override
@@ -60,7 +62,7 @@ public class PoliceRepositoryImpl implements PoliceRepository{
                 "INNER JOIN event_delegation_police ON police.police_id = event_delegation_police.police_id " +
                 "INNER JOIN event_delegation ON event_delegation_police.event_delegation_id = event_delegation.event_delegation_id" +
                 "WHERE event_delegation.event_id = ? AND police.organization_id = ?";
-        return defaultJdbcTemplate.queryForList(sql, subEventId, organizationId);
+        return jdbcTemplate.queryForList(sql, subEventId, organizationId);
     }
 
     @Override
@@ -77,7 +79,7 @@ public class PoliceRepositoryImpl implements PoliceRepository{
                 "INNER JOIN event_delegation_place ON event_delegation_place.route_id = route_police.route_id " +
                 "INNER JOIN event_delegation ON event_delegation_place.event_delegation_id = event_delegation.event_delegation_id" +
                 "WHERE event_delegation.event_id = ? AND event_delegation.delegation_id = ? AND event_delegation_place.route_id = ?;";
-        return defaultJdbcTemplate.queryForList(sql, subEventId, delegationId, routeId);
+        return jdbcTemplate.queryForList(sql, subEventId, delegationId, routeId);
     }
 
 

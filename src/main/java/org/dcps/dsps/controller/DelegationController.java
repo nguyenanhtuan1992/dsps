@@ -2,7 +2,8 @@ package org.dcps.dsps.controller;
 
 import org.dcps.dsps.entity.dao.*;
 import org.dcps.dsps.entity.dao.Police;
-import org.dcps.dsps.service.general.GeneralService;
+import org.dcps.dsps.service.delegation.DelegationService;
+import org.dcps.dsps.service.subevent.SubEventService;
 import org.dcps.dsps.utils.DateUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
@@ -17,7 +18,6 @@ import static org.springframework.web.bind.annotation.RequestMethod.GET;
 /**
  * Created by Cicada on 10/23/2016.
  */
-
 @Controller
 @RequestMapping("delegation")
 public class DelegationController extends BaseController{
@@ -27,13 +27,16 @@ public class DelegationController extends BaseController{
     String mapUrl;
 
     @Autowired
-    GeneralService generalService;
+    DelegationService delegationService;
+
+    @Autowired
+    SubEventService subEventService;
 
     @RequestMapping(value = "displayDelegation", method = GET)
     public String displayDelegation(ModelMap modelMap, Delegation delegationInputForm) {
 
-        Delegation delegation = generalService.getDelegation(delegationInputForm.getId());
-        List<Event> listEvents = generalService.getAllSubEventOfDelegation(delegationInputForm.getId());
+        Delegation delegation = delegationService.getDelegation(delegationInputForm.getId());
+        List<Event> listEvents = subEventService.getAllSubEventOfDelegation(delegationInputForm.getId());
         /* set data to view, set current Event default is the Event nearest now. List Event is ordered by Time Start */
         Event currentEvent = null;
         int i = 0;

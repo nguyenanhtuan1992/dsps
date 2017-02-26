@@ -2,7 +2,7 @@ package org.dcps.dsps.controller.rest;
 
 import org.dcps.dsps.entity.dao.Police;
 import org.dcps.dsps.entity.dao.SuperEvent;
-import org.dcps.dsps.service.general.GeneralService;
+import org.dcps.dsps.service.superevent.SuperEventService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -22,16 +22,16 @@ public class GeneralController {
     private static Logger logger = LoggerFactory.getLogger(GeneralController.class);
 
     @Autowired
-    GeneralService generalService;
+    SuperEventService superEventService;
 
     @RequestMapping(value = "/getAllSuperEvents", method = GET)
     public List<SuperEvent> getAllSuperEvents(){
-        return generalService.getAllSuperEvents();
+        return superEventService.getAllSuperEvents();
     }
 
     @RequestMapping(value = "/getSuperEvent/{id}", method = GET)
     public SuperEvent getAllSuperEvents(@PathVariable Long id){
-        return generalService.getSuperEvent(id);
+        return superEventService.getSuperEvent(id);
     }
 
     //Get Police by Id
@@ -42,6 +42,6 @@ public class GeneralController {
         police.setId(0l);
         police.setName("TuanNN");
         return police;
-        //return generalService.getPolice(id);
+        //return superEventService.getPolice(id);
     }
 }
